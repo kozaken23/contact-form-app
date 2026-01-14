@@ -1,247 +1,293 @@
-.admin-form__content{
-    margin: 0 auto;
-    padding: 20px 15px;
-    max-width: 1230px;
+/* 変数定義 */
+
+:root {
+    --bg: #f5f8ff;
+    --card: #ffffff;
+    --line: #e6ecff;
+    --text: #1f2a44;
+    --muted: #6b7a99;
+
+    --primary: #2563eb;
+    --primary2: #1d4ed8;
+
+    --input-bg: #f3f6ff;
+    --input-border: #dbe6ff;
+
+    --shadow: 0 18px 40px rgba(31, 42, 68, 0.08);
 }
 
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+}
+
+/* 全体コンテナ */
+.admin-form__content {
+    max-width: 1100px;
+    margin: 24px auto 64px;
+    padding: 0 16px;
+}
+
+/* 見出し */
 .admin-form__heading {
-    margin-bottom: 30px;
     text-align: center;
+    margin-bottom: 18px;
 }
 
 .heading--logo {
-    color: #684625;
-    font-family: "Merriweather", serif;
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--text);
 }
 
-.admin-search__group{
-    margin: 0 auto;
-    width:100%;
+/* 検索〜一覧を囲うカード */
+.admin-search__group {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 18px 16px 16px;
 }
 
-.search-form{
-    margin: 0 auto;
-    width: 90%;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-}
+/* =========================
+   Search Form
+========================= */
 
-.form__input--user input {
-    width: 100%;
-    padding: 10px;
-    display: inline-block;
-    border: 1px solid #EEEEEE;
-    background: #EEEEEE;
-    border-radius: 2px;
-    appearance: none;
-    height: 30px;
-    font-family: "Merriweather", serif;
-}
-
-.form__input--select{
-    position: relative;
-    min-width: 80px;
-    display: inline-block;
-}
-
-.form__input--select select{
-
-    width: 100%;
-    padding: 5px 10px;
-    border-radius: 2px;
-    background-color: #EEEEEE;
-    border: 1px solid #EEEEEE;
-    color: #918980;
-    font-family: "Merriweather", serif;
-    appearance: none;
-    -webkit-appearance: none;    /* Safari対応 */
-    -moz-appearance: none;    /* Firefox対応 */
-}
-
-.form__input--select::before {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    content: '';
-    width: 15px;
-    height: 10px;
-    background: #aea59b;
-    clip-path: polygon(0 0, 100% 0, 50% 100%); /* 下向き矢印 */
-    pointer-events: none; /* ユーザー操作を無効化 */
-}
-
-.form__input--date input[type="date"]{
-    appearance: none;
-    -webkit-appearance: none;
-    width: 100%;
-    padding: 5px 10px;
-    border-radius: 2px;
-    background-color: #EEEEEE;
-    border: 1px solid #EEEEEE;
-    color: #918980;
-    font-family: "Merriweather", serif;
-    appearance: none;
-}
-
-.form__input--date input[type="date"]::-webkit-calendar-picker-indicator {
-    content: '▼';
-    color: transparent;
-    background: none;
-    cursor: pointer;
-    z-index: 2;
-}
-
-.form__input--date {
-    position: relative;
-    min-width: 80px;
-    display: inline-block;
-}
-
-.form__input--date::after {
-    content: '▼';
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    pointer-events: none;
-    font-size: 14px;
-    color: #666;
-}
-
-
-.search-form__button button {
-    height: 100%;
-    background: #9f886d;
-    border: #9f886d;
-    color: #fff;
-}
-
-.search-form__reset button{
-    height: 100%;
-    background: #dec3a5;
-    border: #dec3a5;
-    color: #fff;
-}
-
-.search-form__top{
-    display: flex;
-    justify-content: space-between;
-}
-
-.search__table{
-    margin: 10px auto;
-    width: 100%;
-    text-align: center;
-}
-
-.search-table__inner {
-    width: 100%;
-}
-
-
-.contact-table__heder--row{
-    background: #9f886d;
-    border-radius: 1px;
-    height: 50px;
-    width: 100%;
-    padding-top: 15px;
-    padding-left: 10px;
-}
-
-.contact-table__item{
-    border: solid 1px #EEEEEE;
-}
-
-.contact-table__header {
-    display: flex;
-    justify-content: space-between;
+.search-form {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.2fr 1fr auto auto;
+    gap: 10px;
     align-items: center;
-    height: 50px;
+    padding: 10px;
+    border-radius: 14px;
+    background: rgba(37, 99, 235, 0.04);
+    border: 1px solid rgba(37, 99, 235, 0.10);
+}
+
+/* 入力共通 */
+.search-form input[type="text"],
+.search-form input[type="date"],
+.search-form select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text);
+    outline: none;
+    font-size: 14px;
+    transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.search-form input::placeholder {
+    color: var(--muted);
+}
+
+/* フォーカス */
+.search-form input:focus,
+.search-form select:focus {
+    background: #fff;
+    border-color: rgba(37, 99, 235, 0.9);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
+}
+
+/* ボタン共通 */
+.search-form__button-submit {
+    border: none;
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--primary2));
+    box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+    white-space: nowrap;
+}
+
+.search-form__button-submit:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+    box-shadow: 0 14px 28px rgba(37, 99, 235, 0.28);
+}
+
+.search-form__button-submit:active {
+    transform: translateY(0);
+}
+
+/* リセットだけ見分けやすく（同じclassなので上書き） */
+.search-form__reset .search-form__button-submit {
+    background: #ffffff;
+    color: var(--primary);
+    border: 1px solid var(--input-border);
+    box-shadow: none;
+}
+
+.search-form__reset .search-form__button-submit:hover {
+    background: rgba(37, 99, 235, 0.06);
+}
+
+/* =========================
+   Top Row
+========================= */
+
+.search-form__top {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Export button */
+.export--text {
+    border: 1px solid var(--input-border);
+    background: #fff;
+    color: var(--primary);
+    font-weight: 800;
+    padding: 10px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background .15s ease, transform .12s ease;
+}
+
+.export--text:hover {
+    background: rgba(37, 99, 235, 0.06);
+    transform: translateY(-1px);
+}
+
+/* =========================
+   Table
+========================= */
+
+.search__table {
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* table */
+.contact-table__inner {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* ヘッダー行 */
+.contact-table__header {
+    background: #f1f5ff;
+}
+
+.contact-table__heder--row {
+    padding: 12px 14px;
+}
+
+/* ヘッダー内 span をグリッドで整列 */
+.contact-table__header-span {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text);
+    width: 20%;
+}
+
+/* 行 */
+.contact-table__row {
+    background: #fff;
 }
 
 .contact-table__item {
-    display: flex;
-    justify-content: space-between;
+    padding: 12px 14px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 0.6fr 1.2fr 1.2fr auto;
     align-items: center;
+    gap: 10px;
 }
 
-.contact-table__header-span{
-    margin-right: 150px;
-    color: #ffffffd8;
-    font-family: "Merriweather", serif;
+.contact-table__row:hover .contact-table__item {
+    background: rgba(37, 99, 235, 0.04);
 }
 
-.contact-table__item-name{
-    width: 200px;
-    text-align: left;
-    font-family: "Merriweather", serif;
+/* セル */
+.contact-table__item-name {
+    font-weight: 800;
 }
 
-.contact-table__item-gender{
-    width: 170px;
-    text-align: left;
-    font-family: "Merriweather", serif;
+.contact-table__item-gender,
+.contact-table__item-email,
+.contact-table__item-type {
+    color: var(--text);
+    font-weight: 700;
 }
 
-.contact-table__item-email{
-    width: 260px;
-    text-align: left;
-    font-family: "Merriweather", serif;
+.contact-table__item-email {
+    color: var(--muted);
+    font-weight: 700;
 }
 
-.contact-table__item-type{
-    width: 340px;
-    text-align: left;
-    margin-left: 20px;
-    font-family: "Merriweather", serif;
+/* 詳細ボタン */
+.detail {
+    border: none;
+    padding: 10px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--primary2));
+    box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+    white-space: nowrap;
 }
 
-.contact-table__item-detail button{
-    text-align: left;
-    margin-right: 10px;
-    padding:5px 10px;
-    font-family: "Merriweather", serif;
-    border: solid 1px #d5b781;
-    border-radius: 2px;
-    color: #d5b781;
+.detail:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+    box-shadow: 0 14px 28px rgba(37, 99, 235, 0.28);
 }
 
-.contact-table__row th,
-.contact-table__row td {
-    height: 50px;
-}
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 980px) {
+    .search-form {
+        grid-template-columns: 1fr 1fr;
+    }
 
-/* ページネーション */
+    .search-form__button,
+    .search-form__reset {
+        justify-self: stretch;
+    }
 
-svg.w-5.h-5 {
-    /*paginateメソッドの矢印の大きさ調整のために追加*/
-    width: 30px;
-    height: 30px;
-}
+    .search-form__button-submit {
+        width: 100%;
+    }
 
-.page-logo{
-    margin: 10px 10px;
-    padding: 5px 10px;
-}
+    .contact-table__header-span {
+        width: auto;
+        margin-right: 12px;
+    }
 
-/* search */
+    .contact-table__item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
 
-.search-export button{
-    width: 100px;
-    height: 30px;
-    margin-top: 10px;
-    padding-top: 5px;
-    background: #faf2eb;
-    border: #dec3a5;
-    border-radius: 1px;
-    text-align: center;
-}
+    .contact-table__item-detail {
+        margin-top: 8px;
+    }
 
-.export--text{
-    color: #9f886d;
-    font-family: "Merriweather", serif;
-    font-weight: bold;
-    text-align: center;
+    .detail {
+        width: 100%;
+    }
+
+    .search-form__top {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }

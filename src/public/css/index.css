@@ -1,187 +1,314 @@
-.contact-form__content{
-    margin: 0 auto;
-    padding: 30x 15px;
-    max-width: 1230px;
+/* 変数定義 */
+
+:root {
+    --bg: #f5f8ff;
+    --card: #ffffff;
+    --line: #e6ecff;
+    --text: #1f2a44;
+    --muted: #6b7a99;
+
+    --primary: #2563eb;
+    /* Blue */
+    --primary2: #1d4ed8;
+    /* Darker */
+    --danger: #e11d48;
+
+    --input-bg: #f3f6ff;
+    --input-border: #dbe6ff;
 }
 
-.contact-form__heading{
-    margin-bottom: 20px;
+/* ページ背景（app.bladeのmain全体が白ならここが効く） */
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* フォーム全体のコンテナ（カード化） */
+.contact-form__content {
+    margin: 24px auto 64px;
+    padding: 24px 16px;
+    max-width: 920px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(31, 42, 68, 0.08);
+}
+
+/* 見出し */
+.contact-form__heading {
+    margin-bottom: 18px;
     text-align: center;
 }
 
-.heading--logo{
-    color: #684625;
-    font-family: "Merriweather", serif;
+.heading--logo {
+    margin: 0;
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: 0.02em;
 }
 
-.form{
+/* form本体 */
+.form {
     margin: 0 auto;
-    width: 70%;
-    text-align: center;
-}
-
-.form__group{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.form__label--item{
-    color: #684625;
-}
-
-.form__label--required{
-    margin-left: 2px;
-    color: rgb(215, 145, 145);
-}
-
-.form__group-content{
-    display: flex;
-    width: 60%;
-    color: #684625;
-    font-family: "Merriweather", serif;
-
-    /*border: solid 3px rgb(167, 167, 209); kakunin*/
-}
-
-/* name */
-.form__input--name{
-    display: flex;
-    justify-content: space-between;
     width: 100%;
-    margin: 0 auto;
+    text-align: left;
+    /* 入力は左揃えの方が普遍的 */
 }
 
-.form__input--name input{
-    padding: 10px;
-    width: 230px;
-    border: 1px solid #EEEEEE;
-    background: #EEEEEE;
-    border-radius: 2px;
-    appearance: none;
-    height: 30px;
-
-    font-family: "Merriweather", serif;
+/* 1行（ラベル左 / 入力右） */
+.form__group {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
 }
 
-/* email */
-.form__input--text input{
-    padding: 10px;
-    width: 500px;
-    border: 1px solid #EEEEEE;
-    background: #EEEEEE;
-    border-radius: 2px;
-    appearance: none;
-    margin-right: 50px;
+/* ホバー */
+.form__group:hover {
+    background: rgba(37, 99, 235, 0.04);
+}
+
+/* 左のラベル欄 */
+.form__group-title {
+    width: 34%;
+    min-width: 180px;
+    padding-top: 6px;
+}
+
+.form__label--item {
+    color: var(--text);
+    font-weight: 700;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+}
+
+.form__label--required {
+    margin-left: 6px;
+    color: var(--danger);
+    font-weight: 800;
+}
+
+/* 右の入力欄 */
+.form__group-content {
+    width: 66%;
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+}
+
+/* =========================
+   Inputs (共通スタイル)
+========================= */
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="tel"],
+.form select,
+.form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    border-radius: 10px;
+    outline: none;
+    color: var(--text);
+    font-size: 15px;
+    transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+/* フォーカス時 */
+.form input[type="text"]:focus,
+.form input[type="email"]:focus,
+.form input[type="tel"]:focus,
+.form select:focus,
+.form textarea:focus {
+    border-color: rgba(37, 99, 235, 0.9);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
+    background: #ffffff;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+    color: var(--muted);
+}
+
+.form__input--name {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.form__input--name>div {
+    flex: 1;
+}
+
+.form__input--name input {
+    height: 42px;
+}
+
+/* =========================
+   Email / Address / Building
+========================= */
+.form__input--text {
+    width: 100%;
 }
 
 .form__input--text input {
-    height: 30px;
+    height: 42px;
+    margin-right: 0;
+    /* 既存CSSの余計な右マージンを無効化 */
 }
 
-.form__input--text input::placeholder{
-    font-family: "Merriweather", serif;
-}
-
-/* ボタン */
+/* =========================
+   Gender (Radio)
+========================= */
+/* radioカスタム */
 .form__group-content input[type="radio"] {
     appearance: none;
     -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ddd;
-    border-radius: 50%;
-    background-color: #fff;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--input-border);
+    border-radius: 999px;
+    background: #fff;
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: 8px;
+    vertical-align: -3px;
 }
 
-.form__group-content input[type="radio"]:checked{
-    border-color: #9f886d;
-    background-color: #9f886d;
+.form__group-content input[type="radio"]:checked {
+    border-color: var(--primary);
+    background: radial-gradient(circle at center, var(--primary) 0 55%, #fff 56% 100%);
 }
 
-/* tel */
+/* =========================
+   Tel (3分割)
+========================= */
 .form__input--tel {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
     width: 100%;
-    margin: 0 auto;
 }
 
 .form__input--tel input {
-    padding: 10px;
-    width: 130px;
-    border: 1px solid #EEEEEE;
-    background: #EEEEEE;
-    border-radius: 2px;
-    appearance: none;
-    height: 30px;
+    height: 42px;
+    width: clamp(88px, 20%, 140px);
+    /* 画面に応じて伸縮 */
 }
 
-.form__input--tel input::placeholder{
-    font-family: "Merriweather", serif;
+/* ハイフン調整 */
+.form__input--tel {
+    color: var(--muted);
+    font-weight: 700;
 }
 
+/* =========================
+   Select (お問い合わせ種類)
+========================= */
 .form__input--type {
     position: relative;
-    /* 疑似要素を配置するため */
-    width: 250px;
+    width: 100%;
+    max-width: 360px;
 }
 
 .form__input--type select {
-    width: 100%;
-    padding: 5px 10px;
-    border-radius: 2px;
-    background-color: #EEEEEE;
-    border: 1px solid #EEEEEE;
-    color: #918980;
-    font-family: "Merriweather", serif;
-    appearance: none;
-    -webkit-appearance: none; /* Safari対応 */
-    -moz-appearance: none; /* Firefox対応 */
+    color: var(--text);
+    height: 42px;
 }
 
+/* 矢印を青系に */
 .form__input--type::before {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    /* 垂直方向に中央揃え */
-    content: '';
-    width: 20px;
-    height: 15px;
-    background: #918980;
-    clip-path: polygon(0 0, 100% 0, 50% 100%); /* 下向き矢印 */
-    pointer-events: none;
-    /* ユーザー操作を無効化 */
+    background: var(--primary);
+    width: 14px;
+    height: 10px;
+    right: 14px;
 }
 
-/* textarea */
-.form__input--textarea{
+/* =========================
+   Textarea
+========================= */
+.form__input--textarea {
     width: 100%;
-    height: 100px;
+    height: auto;
 }
 
 .form__input--textarea textarea {
-    height: 100px;
-    width: 100%;
-    height: 100%;
-    background-color: #EEEEEE;
-    border: #EEEEEE;
+    min-height: 140px;
+    resize: vertical;
+    border: 1px solid var(--input-border);
 }
 
-.form__button button{
-    background: #9f886d;
-    border: #9f886d;
+/* =========================
+   Button
+========================= */
+.form__button {
+    margin-top: 18px;
+    text-align: center;
+}
+
+.form__button-submit {
+    appearance: none;
+    border: none;
+    background: linear-gradient(135deg, var(--primary), var(--primary2));
     color: #fff;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.25);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
 }
 
-.form__error{
+.form__button-submit:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+    box-shadow: 0 18px 36px rgba(37, 99, 235, 0.30);
+}
+
+.form__button-submit:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   Error
+========================= */
+.form__error {
     display: inline-block;
-    margin: 2px;
-    padding: 3px;
-    background: #EEEEEE;
-    color: #e45353;
-    border-radius: 2px;
+    margin-top: 8px;
+    padding: 8px 10px;
+    background: rgba(225, 29, 72, 0.08);
+    color: var(--danger);
+    border: 1px solid rgba(225, 29, 72, 0.20);
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 820px) {
+    .form__group {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form__group-title,
+    .form__group-content {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .form__input--name {
+        flex-direction: column;
+    }
+
+    .form__input--type {
+        max-width: none;
+    }
 }

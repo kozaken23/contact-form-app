@@ -1,82 +1,166 @@
-.confirm__content {
-    margin: 0 auto;
-    padding: 30px 15px;
-    max-width: 1230px;
+/* =========================
+   Confirm Page (Blue Theme)
+========================= */
+
+:root {
+    --bg: #f5f8ff;
+    --card: #ffffff;
+    --line: #e6ecff;
+    --text: #1f2a44;
+    --muted: #6b7a99;
+
+    --primary: #2563eb;
+    --primary2: #1d4ed8;
 }
 
+/* 背景 */
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* 全体カード */
+.confirm__content {
+    margin: 24px auto 64px;
+    padding: 24px 16px 32px;
+    max-width: 920px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(31, 42, 68, 0.08);
+}
+
+/* 見出し */
 .confirm__heading {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
-.confirm__heading--logo{
-    color: #684625;
-    font-family: "Merriweather", serif;
+.confirm__heading--logo {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
 }
 
-.form {
-    margin: 0 auto;
-    width: 70%;
-}
-
+/* =========================
+   Table
+========================= */
 .confirm-table {
-    border: 1px solid #ddd;
+    margin: 0 auto 24px;
 }
 
 .confirm-table__inner {
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
 }
 
+/* 行 */
+.confirm-table__row:not(:last-child) th,
+.confirm-table__row:not(:last-child) td {
+    border-bottom: 1px solid var(--line);
+}
+
+/* 左：項目名 */
 .confirm-table__header {
-    padding: 5px;
-    width: 20%;
-    border-bottom: 1px solid #ddd;
-    background-color: #c1ad97;
-    color: #fff;
-    font-weight: normal;
+    width: 32%;
+    padding: 14px 16px;
+    background: #f1f5ff;
+    text-align: left;
+    font-weight: 700;
+    color: var(--text);
+    font-size: 14px;
+    vertical-align: top;
 }
 
+/* 右：内容 */
 .confirm-table__text {
-    padding: 5px;
-    border-bottom: 1px solid #ddd;
-    padding-left: 30px;
-    color: #c1ad97;
+    padding: 14px 16px;
+    background: #ffffff;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
 }
 
-.confirm-table__row:last-child .confirm-table__header,
-.confirm-table__row:last-child .confirm-table__text {
-    border-bottom-width: 0;
+.confirm-table__text p {
+    margin: 0;
+    white-space: pre-wrap;
+    /* お問い合わせ内容の改行対応 */
 }
 
-.confirm__post{
+/* =========================
+   Buttons
+========================= */
+.confirm__post {
     display: flex;
-    padding: 30px;
-    justify-content: center;
-    text-align: center;
-    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
 }
 
-.form__button {
-    margin-top: 0px;
-}
-
+/* 送信ボタン（index.css と統一） */
 .form__button-submit {
-    padding: 10px;
-    width: 100px;
-    height: 40px;
+    appearance: none;
     border: none;
-    border-radius: 3px;
-    background: #c1ad97;
+    background: linear-gradient(135deg, var(--primary), var(--primary2));
     color: #fff;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.02em;
     cursor: pointer;
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.25);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
 }
 
-.form__correction{
-    margin-top: 10px;
+.form__button-submit:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+    box-shadow: 0 18px 36px rgba(37, 99, 235, 0.30);
 }
 
+/* 修正リンク */
 .form__correction a {
-    color: #c1ad97;
-    font-weight: normal;
-    cursor: pointer;
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.form__correction a:hover {
+    border-color: var(--primary);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 820px) {
+
+    .confirm-table__inner,
+    .confirm-table__row,
+    .confirm-table__header,
+    .confirm-table__text {
+        display: block;
+        width: 100%;
+    }
+
+    .confirm-table__header {
+        background: #f1f5ff;
+        border-bottom: none;
+    }
+
+    .confirm-table__text {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .confirm-table__row:last-child .confirm-table__text {
+        border-bottom: none;
+    }
 }

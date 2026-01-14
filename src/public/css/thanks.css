@@ -1,56 +1,82 @@
+:root{
+    --bg: #f5f8ff;
+    --card: #ffffff;
+    --line: #e6ecff;
+    --text: #1f2a44;
+    --muted: #6b7a99;
+
+    --primary: #2563eb;
+    --primary2: #1d4ed8;
+}
+
+body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+    }
+
+/* 全体カード */
 .thanks-form__content{
-    position: relative;
-    margin: 0 auto;
-    width: 100%;
-    height: 100vh;
-    box-sizing: border-box;
-}
-
-.thanks-form__back{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50% ,-50%);
+    max-width: 720px;
+    margin: 80px auto;
+    padding: 34px 22px 28px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(31, 42, 68, 0.08);
     text-align: center;
-    width: 100%;
-    max-width: 1230px;;
-    letter-spacing: 20px;
-
-    font-size: 200px;
-    font-family: "Merriweather", serif;
-    color: #f4f3f3;
 }
 
+/* 上の "Thank you" */
+.thanks-form__back p{
+    margin: 0 0 18px;
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    color: var(--primary);
+}
+
+/* メッセージ＋HOME */
 .form__group{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    text-align: center;
+    display: grid;
+    gap: 14px;
+    justify-items: center;
+    margin: 0;
 }
 
 .form__group--item{
-    max-width: 100%;
-    font-size: 25px;
-    letter-spacing: 3px;
-    font-weight: bold;
-    color: #907c65;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
 }
 
+/* HOMEリンクをボタン風に */
 .form__group--home{
-    margin-top: 20px;
-    width: 110px;
-    height: 35px;
-    line-height: 35px; /* line-heightをheightと同じ高さにすることで垂直方向中央にくる */
-    text-align: center;
-    background: #907c65;
-    text-decoration: none;
     display: inline-block;
-    color: #EEEEEE;
-    border-radius: 1px;
-    border: solid 1px #907c65;
-    font-family: "Merriweather", serif;
-    
+    padding: 12px 26px;
+    border-radius: 999px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--primary2));
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.25);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
 }
 
+.form__group--home:hover{
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+    box-shadow: 0 18px 36px rgba(37, 99, 235, 0.30);
+}
+
+/* スマホ */
+@media (max-width: 520px){
+    .thanks-form__content{
+        margin: 48px 14px;
+    }
+    .thanks-form__back p{
+        font-size: 30px;
+    }
+}

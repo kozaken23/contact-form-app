@@ -1,67 +1,160 @@
+/* 変数定義 */
 
-.login-form__back {
-    margin: 0 auto;
-    padding: 20px 15px;
-    width: 100vw;
-    height: 100vh;
-    background-color: #e7d4cc;
+:root {
+    --bg: #f5f8ff;
+    --card: #ffffff;
+    --line: #e6ecff;
+    --text: #1f2a44;
+    --muted: #6b7a99;
+
+    --primary: #2563eb;
+    --primary2: #1d4ed8;
+    --danger: #e11d48;
+
+    --input-bg: #f3f6ff;
+    --input-border: #dbe6ff;
 }
 
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+}
+
+/* =========================
+   全体ラッパー
+========================= */
+.login-form__back {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
+/* =========================
+   カード
+========================= */
+.login-form {
+    width: 100%;
+    max-width: 420px;
+    padding: 32px 28px 36px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(31, 42, 68, 0.08);
+}
+
+/* =========================
+   見出し
+========================= */
 .login-form__heading {
     text-align: center;
+    margin-bottom: 22px;
 }
 
 .login--logo {
-    color: #684625;
-    font-family: "Merriweather", serif;
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--text);
 }
 
-.login-form {
-    text-align: center;
-    margin: 30px 400px;
-    height: 300px;
-    border: solid 2px #EEEEEE;
-    border-radius: 2px;
-    background-color: #f6f5f5;
+/* =========================
+   フォーム
+========================= */
+.form {
+    display: grid;
+    gap: 18px;
 }
 
+/* 1項目 */
 .form__input {
-    margin: 20px 100px;
+    display: grid;
+    gap: 6px;
 }
 
 .form__input--item {
-    text-align: left;
-    color: #684625;
-    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text);
 }
 
+/* 入力欄 */
 .form__input--content input {
-    padding: 10px;
-    width: 230px;
-    border: 1px solid #EEEEEE;
-    background: #EEEEEE;
-    border-radius: 2px;
-    appearance: none;
-    height: 30px;
-    font-family: "Merriweather", serif;
+    width: 100%;
+    padding: 11px 12px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text);
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.form__input--content input::placeholder {
+    color: var(--muted);
+}
+
+/* フォーカス */
+.form__input--content input:focus {
+    background: #ffffff;
+    border-color: rgba(37, 99, 235, 0.9);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
+}
+
+/* =========================
+   エラーメッセージ
+========================= */
+.error-message {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--danger);
+}
+
+/* =========================
+   ログインボタン
+========================= */
+.form__login {
+    margin-top: 6px;
 }
 
 .form__login button {
-    width: 100px;
-    height: 35px;
-    background: #9f886d;
-    border: #9f886d;
-    border-radius: 1px;
-    color: #fff;
-    font-size: 17px;
+    width: 100%;
+    appearance: none;
+    border: none;
+    padding: 12px 0;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--primary), var(--primary2));
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.25);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
 }
 
-.error-message {
-    display: inline-block;
-    margin: 2px;
-    padding: 3px;
-    background: #EEEEEE;
-    color: #e45353;
-    font-size: 15px;
-    border-radius: 2px;
+.form__login button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+    box-shadow: 0 18px 36px rgba(37, 99, 235, 0.30);
+}
+
+.form__login button:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 480px) {
+    .login-form {
+        margin: 0 14px;
+        padding: 28px 20px 32px;
+    }
 }

@@ -17,11 +17,11 @@ class CategoriesTableSeeder extends Seeder
     {
         //
         $categories = [
-            ['content' => '商品のお届けについて'],
-            ['content' => '商品の交換について'],
-            ['content' => '商品トラブル'],
-            ['content' => 'ショップへのお問い合わせ'],
-            ['content' => 'その他'],
+            ['content' => 'ご注文・配送について'],
+            ['content' => '返品・交換について'],
+            ['content' => '不具合・トラブルについて'],
+            ['content' => 'サービス全般に関するお問い合わせ'],
+            ['content' => 'その他のお問い合わせ'],
         ];
 
         foreach ($categories as $category) {

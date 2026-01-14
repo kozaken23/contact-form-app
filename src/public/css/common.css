@@ -1,44 +1,65 @@
 .header {
-    background: #f6f4f3;
-    border-bottom: 2px solid #e0d5d5
+    background: #2563eb;
+    /* 単色に */
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
 }
 
 .header__inner {
     margin: 0 auto;
-    padding: 40px 15px;
-    max-width: 1230px;
+    padding: 18px 16px;
+    max-width: 1100px;
 }
 
 .header-utilities {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    /* 中央寄せ（基本はタイトルだけ） */
     position: relative;
+    min-height: 56px;
 }
 
 .header__logo {
-    color: #684625;
-    font-weight: bold;
-    font-size: 24px;
+    margin: 0;
+    color: #fff;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.04em;
 
-    font-family: "Merriweather", serif;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    /* フォントは今のままでもOK。普遍寄りにするなら system に */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+
+    /* absolute をやめて自然な中央配置 */
+    position: static;
+    transform: none;
 }
 
+/* ログインリンクがある場合：右上に綺麗に置く */
 .header__login {
-    margin: 3px;
-    padding: 3px;
-    background: #EEEEEE;
-    text-decoration: none;
-    display: inline-block;
-    color: #684625;
-    border-radius: 3px;
-    border: solid 3px #684625;
-    font-family: "Merriweather", serif;
-
     position: absolute;
-    right: 15px;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
 
+    margin: 0;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    backdrop-filter: blur(6px);
+}
+
+.header__login:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.header__login:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.7);
+    outline-offset: 2px;
 }
