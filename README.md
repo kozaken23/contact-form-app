@@ -7,7 +7,7 @@ Laravel を用いて作成したお問い合わせ管理アプリケーション
 
 ### Docker ビルド
 ```bash
-git clone git@github.com:kozaken23/kakunin.git
+git clone git@github.com:kozaken23/contact-form-app.git
 cd kakunin
 docker-compose up -d --build
 docker-compose exec php bash
