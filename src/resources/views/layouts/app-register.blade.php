@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,12 +16,13 @@
     @yield('css')
     @livewireStyles
 </head>
+
 <body>
     <header class="header">
         <div class="header__inner">
             <div class="header-utilities">
                 <h1 class="header__logo">
-                    FashionablyLate
+                    Contact Form
                 </h1>
                 <a class="header__login" href="/register">register</a>
             </div>
@@ -31,4 +33,5 @@
     </main>
     @livewireScripts
 </body>
+
 </html>

@@ -20,7 +20,7 @@
         <div class="header__inner">
             <div class="header-utilities">
                 <h1 class="header__logo">
-                    FashionablyLate
+                    Contact Form
                 </h1>
                 <a class="header__login" href="/login">login</a>
             </div>
